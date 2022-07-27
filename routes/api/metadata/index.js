@@ -2,13 +2,14 @@ const express = require('express');
 const multer = require('multer');
 const AWS = require('aws-sdk');
 const multerS3 = require('multer-s3');
+require('dotenv').config();
 
 const router = express.Router();
 
 const s3 = new AWS.S3({
-  accessKeyId: 'AKIAXNBBU725SOAUQO7G',
-  secretAccessKey: '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',
-  region: 'ap-northeast-2',
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: process.env.S3_RESION,
 });
 
 const upload = multer({
